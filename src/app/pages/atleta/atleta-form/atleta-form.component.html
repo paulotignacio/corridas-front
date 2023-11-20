@@ -1,0 +1,42 @@
+<div>  
+  <h2>Adicionar Atleta</h2>
+  <form (submit)="atualizarAtleta()">
+    <div>
+      <label>Nome</label>
+      <input [(ngModel)]="atleta.nome" name="nome" />
+    </div>
+    <div>
+      <label>Data de Nascimento</label>
+      <input [(ngModel)]="atleta.data_nascimento" type="date" name="dataNascimento" />
+    </div>
+    <div>
+      <label>Gênero</label>
+      <select [(ngModel)]="selectedGenero" name="genero">
+        <option value="F">Feminino</option>
+        <option value="M">Masculino</option>
+      </select>
+    </div>
+    <div>
+      <label>Estado</label>
+      <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
+        <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
+      </select>
+    </div>
+    <div>
+      <label>Cidade</label>
+      <select [(ngModel)]="selectedCidade" name="cidade">
+        <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
+      </select>
+    </div>
+    <div>
+      <label>Usuário</label>
+      <input [(ngModel)]="atleta.username" name="username" />
+    </div>
+    <div>
+      <label>Senha</label>
+      <input [(ngModel)]="atleta.password" type="Password" name="password" />
+    </div>
+    <button type="submit">Salvar</button>
+  </form>
+  <a routerLink="/atletas/login">Já tem uma conta, faça login</a>
+</div>

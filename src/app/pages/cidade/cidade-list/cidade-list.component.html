@@ -1,0 +1,9 @@
+<h2>Lista de Cidades</h2>
+<ul>
+  <li *ngFor="let cidade of cidades">
+    {{ cidade.nome }} - {{ cidade.estado }} (ID: {{ cidade.id }})
+    <button (click)="editarCidade(cidade)">Editar</button>
+    <button (click)="confirmarExclusao(cidade)">Excluir</button>
+  </li>
+</ul>
+<button routerLink="/cidades/nova">Adicionar Cidade</button>

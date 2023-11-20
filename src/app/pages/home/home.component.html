@@ -1,0 +1,36 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corridas</title>
+</head>
+<body>
+    <div class="container">
+        <div class="filters">
+            <label for="estado">Estado:</label>
+            <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
+                <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
+            </select>
+
+            <label for="cidade">Cidade:</label>
+            <select [(ngModel)]="selectedCidade" name="cidade">
+                <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
+            </select>
+
+            <label for="dataInicial">Data Inicial:</label>
+            <input type="date" [(ngModel)]="dataInicial" name="dataInicial">
+
+            <label for="dataFinal">Data Final:</label>
+            <input type="date" [(ngModel)]="dataFinal" name="dataFinal">
+
+            <button (click)="onPesquisar()">Pesquisar</button>
+        </div>
+
+        <ul id="dynamicList">
+            <li *ngFor="let corrida of corridasFiltered">
+                <!-- criar o template do item da lista -->
+                <p>{{corrida.nome}} - {{corrida.data_largada}}</p>
+            </li>
+        </ul>
+    </div>
+
+</body>

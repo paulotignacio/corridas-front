@@ -1,0 +1,49 @@
+<h2>Adicionar Corrida</h2>
+<form (submit)="atualizarCorrida()">
+  <div>
+    <label>Nome</label>
+    <input [(ngModel)]="corrida.nome" name="nome" />
+  </div>
+  <div>
+    <label>Início inscrição</label>
+    <input type="date" [(ngModel)]="corrida.inicio_inscricao" name="inicio_inscricao" />
+  </div>  
+  <div>
+    <label>Fim inscrição</label>
+    <input type="date" [(ngModel)]="corrida.fim_inscricao" name="fim_inscricao" />
+  </div>
+  <div>
+    <label>Data de largada</label>
+    <input type="date" [(ngModel)]="corrida.data_largada" name="data_largada" />
+  </div>
+  <div>
+    <label>Hora de largada</label>
+    <input type="time" [(ngModel)]="corrida.hora_largada" name="hora_largada" />
+  </div>
+  <div>
+    <label>Percurso</label>
+    <input [(ngModel)]="corrida.percurso" name="percurso" />
+  </div>
+  <div>
+    <label>Valor</label>
+    <input [(ngModel)]="corrida.valor" placeholder="Valor" name="valor" />
+  </div>
+  <div>
+    <label>Site</label>
+    <input [(ngModel)]="corrida.site" name="site" />
+  </div>
+  <div>
+    <label>Estado</label>
+    <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
+      <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
+    </select>
+  </div>
+  <div>
+    <label>Cidade</label>
+    <select [(ngModel)]="selectedCidade" name="cidade">
+      <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
+    </select>
+  </div>
+  <button type="submit">Salvar</button>
+</form>
+<button routerLink="/corridas">Voltar para lista</button>

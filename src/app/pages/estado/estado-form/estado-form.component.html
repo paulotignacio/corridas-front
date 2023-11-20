@@ -1,0 +1,7 @@
+<h2>Adicionar Estado</h2>
+<form (submit)="atualizarEstado()">
+  <input [(ngModel)]="estado.nome" placeholder="Nome" name="nome" />
+  <input [(ngModel)]="estado.uf" placeholder="UF" name="uf" />
+  <button type="submit">Salvar</button>
+</form>
+<button routerLink="/estados">Voltar para lista</button>

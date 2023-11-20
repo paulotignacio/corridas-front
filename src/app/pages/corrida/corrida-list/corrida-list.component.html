@@ -1,0 +1,9 @@
+<h2>Minhas corridas</h2>
+<ul>
+  <li *ngFor="let corrida of corridas">
+    {{ corrida.nome }} - {{ corrida.valor }} (ID: {{ corrida.id }})
+    <button (click)="editarCorrida(corrida)">Editar</button>
+    <button (click)="confirmarExclusao(corrida)">Excluir</button>
+  </li>
+</ul>
+<button routerLink="/corridas/nova">Adicionar Corridas</button>

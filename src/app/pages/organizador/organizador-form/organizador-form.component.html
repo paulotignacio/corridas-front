@@ -1,0 +1,17 @@
+<h2>Adicionar Organizador</h2>
+<form (submit)="atualizarOrganizador()">
+  <div>    
+    <label>Nome</label>
+    <input [(ngModel)]="organizador.nome" name="nome" />
+  </div>
+  <div>
+    <label>Usuário</label>
+    <input [(ngModel)]="organizador.username" name="username" />
+  </div>
+  <div>
+    <label>Senha</label>
+    <input [(ngModel)]="organizador.password" type="Password" name="password" />
+  </div>
+  <button type="submit">Salvar</button>
+</form>
+<a routerLink="/organizadores/login">Já tem uma conta, faça login</a>

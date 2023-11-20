@@ -1,0 +1,9 @@
+<h2>Lista de Estados</h2>
+<ul>
+  <li *ngFor="let estado of estados">
+    {{ estado.nome }} - {{ estado.uf }} (ID: {{ estado.id }})
+    <button (click)="editarEstado(estado)">Editar</button>
+    <button (click)="confirmarExclusao(estado)">Excluir</button>
+  </li>
+</ul>
+<button routerLink="/estados/novo">Adicionar Estado</button>

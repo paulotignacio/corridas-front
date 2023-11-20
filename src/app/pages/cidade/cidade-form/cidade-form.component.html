@@ -1,0 +1,9 @@
+<h2>Adicionar Cidade</h2>
+<form (submit)="atualizarCidade()">
+  <input [(ngModel)]="cidade.nome" placeholder="Nome" name="nome" />
+  <select [(ngModel)]="selectedEstado" name="estado">
+    <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
+  </select>
+  <button type="submit">Salvar</button>
+</form>
+<button routerLink="/cidades">Voltar para lista</button>

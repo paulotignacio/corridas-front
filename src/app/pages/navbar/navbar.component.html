@@ -1,0 +1,8 @@
+<div>
+    <header>
+        <button routerLink="">Home</button>
+        <button *ngIf="!isLoggedIn" routerLink="/organizadores/login">Área dos organizadores</button>
+        <button *ngIf="!isLoggedIn" routerLink="/atletas/login">Área dos atletas</button>
+        <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
+    </header>
+</div>
