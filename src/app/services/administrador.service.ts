@@ -7,7 +7,7 @@ import { Administrador } from '../models/administrador.model';
   providedIn: 'root'
 })
 export class AdministradorService {
-  private baseUrl = 'https://corridasapi1-tnhfq4uw.b4a.run/administradores'; // Sua URL da API
+  private baseUrl = 'https://corridasapi-8xt2jifx.b4a.run/administradores'; // Sua URL da API
 
   constructor(private http: HttpClient) {}
 

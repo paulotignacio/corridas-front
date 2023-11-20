@@ -7,7 +7,7 @@ import { Organizador } from '../models/organizador.model';
   providedIn: 'root'
 })
 export class OrganizadorService {
-  private baseUrl = 'https://corridasapi1-tnhfq4uw.b4a.run/organizadores'; // Sua URL da API
+  private baseUrl = 'https://corridasapi-8xt2jifx.b4a.run/organizadores'; // Sua URL da API
 
   constructor(private http: HttpClient) {}
 

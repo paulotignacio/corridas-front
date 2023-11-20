@@ -7,7 +7,7 @@ import { Estado } from '../models/estado.model';
   providedIn: 'root'
 })
 export class EstadoService {
-  private baseUrl = 'https://corridasapi1-tnhfq4uw.b4a.run/estados'; // Sua URL da API
+  private baseUrl = 'https://corridasapi-8xt2jifx.b4a.run/estados'; // Sua URL da API
 
   constructor(private http: HttpClient) {}
 
