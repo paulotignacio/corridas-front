@@ -7,7 +7,7 @@ import { Login } from '../models/login.model';
   providedIn: 'root'
 })
 export class LoginService {
-  private baseUrl = 'https://corridasapi-8xt2jifx.b4a.run/dj-rest-auth'; // Sua URL da API
+  private baseUrl = 'https://corridasapi1-0qtf945p.b4a.run/dj-rest-auth'; // Sua URL da API
 
   constructor(private http: HttpClient) { }
 
