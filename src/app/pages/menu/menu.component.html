@@ -3,7 +3,7 @@
         <button *ngIf="isLoggedIn && isAdministrador" routerLink="/corridas">Corridas</button>
         <button *ngIf="isLoggedIn && isAdministrador" routerLink="/organizadores">Organizadores</button>
         <button *ngIf="isLoggedIn && isAdministrador" routerLink="/administradores">Administradores</button>
-        <button *ngIf="isLoggedIn && isAdministrador" routerLink="/adminstrador-perfil">Meu perfil</button>
+        <button *ngIf="isLoggedIn && isAdministrador" [routerLink]="['administrador-perfil', administradorId]" >Meu perfil</button>
         
         <button *ngIf="isLoggedIn && isOrganizador" routerLink="/corridas">Minhas corridas</button>
         <button *ngIf="isLoggedIn && isOrganizador" [routerLink]="['organizador-perfil', organizadorId]" >Meu perfil</button>

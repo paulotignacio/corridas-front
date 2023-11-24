@@ -13,6 +13,7 @@ import { LoginAdministradorComponent } from './pages/administrador/login-adminis
 import { AdministradorFormComponent } from './pages/administrador/administrador-form/administrador-form.component';
 import { AdministradorListComponent } from './pages/administrador/administrador-list/administrador-list.component';
 import { OrganizadorPerfilComponent } from './pages/organizador/perfil/organizador-perfil.component';
+import { AdministradorPerfilComponent } from './pages/administrador/perfil/administrador-perfil.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'organizadores/novo', component: OrganizadorFormComponent },
   { path: 'organizadores/editar/:id', component: OrganizadorFormComponent },
   { path: 'organizadores/login', component: LoginOrganizadorComponent },
+  { path: 'organizador-perfil/:id', component: OrganizadorPerfilComponent },
   { path: 'atletas', component: AtletaListComponent },
   { path: 'atletas/novo', component: AtletaFormComponent },
   { path: 'atletas/editar/:id', component: AtletaFormComponent },
@@ -30,7 +32,8 @@ const routes: Routes = [
   { path: 'admin', component: LoginAdministradorComponent },
   { path: 'admin/novo', component: AdministradorFormComponent },
   { path: 'administradores', component: AdministradorListComponent },
-  { path: 'organizador-perfil/:id', component: OrganizadorPerfilComponent },
+  { path: 'administrador-perfil/:id', component: AdministradorPerfilComponent },
+  { path: '**', redirectTo: '' },//manter na última posição para checar as outras primeiro
 ];
 
 @NgModule({

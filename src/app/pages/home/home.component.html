@@ -8,21 +8,24 @@
         <div class="filters">
             <label for="estado">Estado:</label>
             <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
+                <option value="undefined" selected disabled>Selecione...</option>
                 <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
             </select>
 
             <label for="cidade">Cidade:</label>
             <select [(ngModel)]="selectedCidade" name="cidade">
+                <option value="undefined" selected disabled>Selecione...</option>
                 <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
             </select>
 
             <label for="dataInicial">Data Inicial:</label>
-            <input type="date" [(ngModel)]="dataInicial" name="dataInicial">
+            <input type="date" [ngModel]="dataInicial | date:'yyyy-MM-dd'" name="dataInicial">
 
             <label for="dataFinal">Data Final:</label>
-            <input type="date" [(ngModel)]="dataFinal" name="dataFinal">
+            <input type="date" [ngModel]="dataFinal | date:'yyyy-MM-dd'" name="dataFinal">
 
             <button (click)="onPesquisar()">Pesquisar</button>
+            <button (click)="onLimpar()">Limpar</button>
         </div>
 
         <ul id="dynamicList">

@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit{
   selectedEstado: any;
   cidades: Cidade[] = [];
   selectedCidade: any;
-  dataInicial: any;
-  dataFinal: any;
+  dataInicial = new Date();
+  dataFinal = new Date();
   
   constructor(
     private corridaService: CorridaService,
@@ -44,21 +44,33 @@ export class HomeComponent implements OnInit{
   
   carregarEstados(): void{
     this.estadoService.listarEstados().subscribe((estados) => {
-      this.estados = estados;
+      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
     });
   }
 
   onEstadoChanged(){
     this.cidadeService.listarCidadesDoEstado(this.selectedEstado).subscribe((cidades) =>{
-      this.cidades = cidades;
+      this.cidades = cidades.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
     });
   }
 
   onPesquisar(){
+    console.log(this.selectedCidade);
+    console.log(this.dataInicial);
+    console.log(this.dataFinal);
     this.corridasFiltered = this.corridas.filter(corrida =>
-      (!this.selectedCidade || corrida.cidade === this.selectedCidade) &&
-      (!this.dataInicial || new Date(corrida.data_largada) >= this.dataInicial) &&
-      (!this.dataFinal || new Date(corrida.data_largada) <= this.dataInicial)
+      (!this.selectedCidade || corrida.cidade == this.selectedCidade) 
+      && (!this.dataInicial || corrida.data_largada >= this.dataInicial) 
+      && (!this.dataFinal || corrida.data_largada <= this.dataInicial)
     );
+  }
+
+  onLimpar():void{
+    this.selectedCidade = null;
+    this.cidades = [];
+    this.selectedEstado = null;
+    this.dataInicial = new Date();
+    this.dataFinal = new Date();
+    this.corridasFiltered = this.corridas;
   }
 }

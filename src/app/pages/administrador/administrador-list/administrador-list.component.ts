@@ -11,6 +11,7 @@ import { AdministradorService } from 'src/app/services/administrador.service';
   styleUrls: ['./administrador-list.component.css']
 })
 export class AdministradorListComponent implements OnInit {
+  administradorId = '';
   administradores: Administrador[] = [];
 
   constructor
@@ -20,6 +21,12 @@ export class AdministradorListComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+    this.carregarStorage();
+    if(!this.administradorId)
+    {
+      this.router.navigate(['']);
+    }
+
     this.listarAdministradores();
   }
 
@@ -50,6 +57,12 @@ export class AdministradorListComponent implements OnInit {
         this.removerAdministrador(administrador.id);
       }
     });
+  }
+
+  carregarStorage(): void{
+    const administradorId = localStorage.getItem('administradorId');
+    if(administradorId)
+      this.administradorId = administradorId;
   }
 
 }

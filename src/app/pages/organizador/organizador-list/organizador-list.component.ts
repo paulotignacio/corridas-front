@@ -11,6 +11,7 @@ import { ConfirmacaoDialogComponent } from '../../confirmacao-dialog/confirmacao
   styleUrls: ['./organizador-list.component.css']
 })
 export class OrganizadorListComponent implements OnInit {
+  administradorId = '';
   organizadores: Organizador[] = [];
 
   constructor
@@ -20,6 +21,12 @@ export class OrganizadorListComponent implements OnInit {
     ) {}
 
   ngOnInit(): void {
+    this.carregarStorage();
+    if(!this.administradorId)
+    {
+      this.router.navigate(['']);
+    }
+
     this.listarOrganizadores();
   }
 
@@ -52,4 +59,9 @@ export class OrganizadorListComponent implements OnInit {
     });
   }
 
+  carregarStorage(): void{
+    const administradorId = localStorage.getItem('administradorId');
+    if(administradorId)
+      this.administradorId = administradorId;
+  }
 }

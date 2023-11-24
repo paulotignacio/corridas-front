@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ConfirmacaoDialogComponent } from 'src/app/pages/confirmacao-dialog/confirmacao-dialog.component';
 import { Corrida } from 'src/app/models/corrida.model';
 import { CorridaService } from 'src/app/services/corrida.service';
@@ -11,13 +11,15 @@ import { CorridaService } from 'src/app/services/corrida.service';
   styleUrls: ['./corrida-list.component.css']
 })
 export class CorridaListComponent implements OnInit{
+  titulo = 'Corridas';
   corridas: Corrida[] = [];
   organizadorId = '';
+  administradorId = '';
+
 
   constructor
   ( private corridaService: CorridaService,
     private router: Router,
-    private route: ActivatedRoute,
     private dialog: MatDialog
     ) {}
 
@@ -25,10 +27,17 @@ export class CorridaListComponent implements OnInit{
     this.carregarStorage();
 
     if(this.organizadorId){
+      this.titulo = 'Minhas corridas';
       const numberId = +this.organizadorId;
       this.corridaService.listarCorridasPorOrganizadorId(numberId).subscribe((corridas) => {
         this.corridas = corridas;
       });
+    }
+
+    if(this.administradorId){
+      this.corridaService.listarCorridas().subscribe((corridas => {
+        this.corridas = corridas;
+      }));
     }
   }
 
@@ -38,8 +47,8 @@ export class CorridaListComponent implements OnInit{
     });
   }
 
-  editarCorrida(cidade: Corrida) {
-    this.router.navigate(['/corridas/editar', cidade.id]);
+  editarCorrida(corrida: Corrida) {
+    this.router.navigate(['/corridas/editar', corrida.id]);
   }
 
   removerCorrida(id: number): void{
@@ -65,5 +74,9 @@ export class CorridaListComponent implements OnInit{
     const organizadorId = localStorage.getItem('organizadorId');
     if(organizadorId)
       this.organizadorId = organizadorId;
+
+    const administradorId = localStorage.getItem('administradorId');
+    if(administradorId)
+      this.administradorId = administradorId;
   }
 }

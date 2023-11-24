@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Organizador } from 'src/app/models/organizador.model';
 import { OrganizadorService } from 'src/app/services/organizador.service';
 
 @Component({
-  selector: 'app-perfil',
+  selector: 'app-organizador-perfil',
   templateUrl: './organizador-perfil.component.html',
   styleUrls: ['./organizador-perfil.component.css']
 })

@@ -1,7 +1,6 @@
 [build]
-  publish = "dist/corridas"
+  publish = "dist/corridas-app"
   command = "ng build --configuration=production"
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200

@@ -4,7 +4,7 @@ import { Administrador } from 'src/app/models/administrador.model';
 import { AdministradorService } from 'src/app/services/administrador.service';
 
 @Component({
-  selector: 'app-perfil',
+  selector: 'app-administrador-perfil',
   templateUrl: './administrador-perfil.component.html',
   styleUrls: ['./administrador-perfil.component.css']
 })

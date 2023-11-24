@@ -28,6 +28,7 @@ export class LoginAdministradorComponent implements OnInit{
         {
           localStorage.setItem('isLoggedIn', 'True');
           localStorage.setItem('userType', 'Administrador');
+          localStorage.setItem('administradorId', response[0].id.toString())
           this.router.navigate(['']).then(() =>{
             window.location.reload();
           });

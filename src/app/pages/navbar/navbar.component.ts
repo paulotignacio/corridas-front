@@ -23,6 +23,9 @@ constructor(
     localStorage.setItem('isLoggedIn', 'False');
     localStorage.removeItem('token');
     localStorage.removeItem('userType');
+    localStorage.removeItem('administradorId');
+    localStorage.removeItem('organizadorId');
+    localStorage.removeItem('atletaId');
     this.router.navigate(['']).then(() => {
       window.location.reload();
     });
