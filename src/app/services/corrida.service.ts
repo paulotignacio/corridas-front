@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CorridaService {
-  private baseUrl = 'http://localhost:8000/corridas'; // Sua URL da API
+  private baseUrl = 'https://corridasapi1-0qtf945p.b4a.run/corridas'; // Sua URL da API
 
   constructor(private http: HttpClient) {}
 
