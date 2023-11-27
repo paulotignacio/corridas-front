@@ -6,14 +6,18 @@ import { Estado } from 'src/app/models/estado.model';
 import { AtletaService } from 'src/app/services/atleta.service';
 import { CidadeService } from 'src/app/services/cidade.service';
 import { EstadoService } from 'src/app/services/estado.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-atleta-form',
   templateUrl: './atleta-form.component.html',
-  styleUrls: ['./atleta-form.component.css']
+  styleUrls: ['./atleta-form.component.css'],
+  providers: [
+    DatePipe
+  ]
 })
 export class AtletaFormComponent implements OnInit {
-  atleta: Atleta = { id: 0, nome: '', data_nascimento: new Date(), genero: '', cidade: 0, username: '', password: '' };
+  atleta: Atleta = { id: 0, nome: '', data_nascimento: '', genero: '', cidade: 0, username: '', password: '' };
   estados: Estado[] = [];
   cidades: Cidade[] = [];
   selectedEstado: any;
@@ -25,7 +29,8 @@ export class AtletaFormComponent implements OnInit {
     private estadoService: EstadoService,
     private cidadeService: CidadeService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private datePipe: DatePipe
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +48,10 @@ export class AtletaFormComponent implements OnInit {
   atualizarAtleta(): void {
     this.atleta.genero = this.selectedGenero;
     this.atleta.cidade = this.selectedCidade;
+    var formattedDate = this.datePipe.transform(this.atleta.data_nascimento, "yyyy-MM-dd");
+    if(formattedDate)
+      this.atleta.data_nascimento = formattedDate;
+
     this.atletaService.atualizarAtleta(this.atleta).subscribe((atleta) => {
       localStorage.setItem('isLoggedIn','True');
       localStorage.setItem('userType','Atleta');
@@ -65,4 +74,7 @@ export class AtletaFormComponent implements OnInit {
     });
   }
 
+  endDateChange(event: any):void{
+    var date = this.atleta.data_nascimento;
+  }
 }

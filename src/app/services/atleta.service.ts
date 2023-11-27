@@ -32,8 +32,8 @@ export class AtletaService {
     return this.http.delete<void>(url);
   }
 
-  login(username: string, password: string): Observable<Atleta> {
+  login(username: string, password: string): Observable<Atleta[]> {
     const url = `${this.baseUrl}?username=${username}&password=${password}`;
-    return this.http.get<Atleta>(url);
+    return this.http.get<Atleta[]>(url);
   }
 }

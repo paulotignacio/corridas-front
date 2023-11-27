@@ -1,8 +1,21 @@
-<div>
-    <header>
-        <button routerLink="">Home</button>
-        <button *ngIf="!isLoggedIn" routerLink="/organizadores/login">Área dos organizadores</button>
-        <button *ngIf="!isLoggedIn" routerLink="/atletas/login">Área dos atletas</button>
-        <button *ngIf="isLoggedIn" (click)="logout()">Logout</button>
-    </header>
+<div class="background-container">
+    <div>
+        <mat-toolbar>
+            <div class="button-row">
+                <button type="submit" routerLink="" mat-button>Home</button>
+            </div>
+
+            <div class="button-row button-login-logout">
+                <button type="submit" *ngIf="!isLoggedIn" routerLink="/organizadores/login" mat-button>Cadastre sua corrida</button>
+            </div>
+
+            <!-- <div class="button-row button-login-logout">
+                <button type="submit" *ngIf="!isLoggedIn" routerLink="/atletas/login" mat-button>Área dos atletas</button>
+            </div> -->
+
+            <div class="button-row button-login-logout">
+                <button type="submit" *ngIf="isLoggedIn" (click)="logout()" mat-button>Logout</button>
+            </div>
+        </mat-toolbar>
+    </div>
 </div>

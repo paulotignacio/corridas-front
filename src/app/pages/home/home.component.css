@@ -15,8 +15,8 @@ header {
 button {
     padding: 10px;
     margin: 5px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: #007bff;
+    color: rgb(255, 255, 255);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -24,11 +24,12 @@ button {
 
 .container {
     max-width: 800px;
-    margin: 20px auto;
+    margin:  auto;
     padding: 10px;
     background-color: white;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(223, 220, 220, 0.1);
 }
+
 
 .filters {
     text-align: center;
@@ -49,4 +50,40 @@ li {
     border: 1px solid #ddd;
     padding: 10px;
     margin: 5px 0;
+}
+
+.nome-destaque {
+    font-weight: bold;
+    color: #007bff; /* cor azul como exemplo, ajuste conforme sua preferência */
+    font-size: 1.2em; /* ajuste o tamanho da fonte conforme necessário */
+}
+
+.corrida-item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+  
+.info-geral {
+    width: 80%;
+}
+ 
+.data-largada {
+    width: 20%;
+    text-align: center;
+}
+  
+.data-label {
+    font-weight: bold;
+}
+  
+.data-destaque {
+    font-size: 1.5em;
+}
+  
+.hora-destaque {
+    font-size: 1.2em;
+    color: #555;
 }

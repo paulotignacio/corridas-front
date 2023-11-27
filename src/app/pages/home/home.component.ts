@@ -1,12 +1,12 @@
-import { CdkDialogContainer } from '@angular/cdk/dialog';
 import { Component, OnInit } from '@angular/core';
-import { ROUTER_INITIALIZER, Router } from '@angular/router';
+import { MatDialog } from '@angular/material/dialog';
 import { Cidade } from 'src/app/models/cidade.model';
 import { Corrida } from 'src/app/models/corrida.model';
 import { Estado } from 'src/app/models/estado.model';
 import { CidadeService } from 'src/app/services/cidade.service';
 import { CorridaService } from 'src/app/services/corrida.service';
 import { EstadoService } from 'src/app/services/estado.service';
+import { DetalheCorridaComponent } from '../detalhe-corrida/detalhe-corrida.component';
 
 @Component({
   selector: 'app-home',
@@ -27,10 +27,10 @@ export class HomeComponent implements OnInit{
     private corridaService: CorridaService,
     private estadoService: EstadoService,
     private cidadeService: CidadeService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
-
     this.carregarEstados();
     this.carregarCorridas();
   }
@@ -59,9 +59,9 @@ export class HomeComponent implements OnInit{
     console.log(this.dataInicial);
     console.log(this.dataFinal);
     this.corridasFiltered = this.corridas.filter(corrida =>
-      (!this.selectedCidade || corrida.cidade == this.selectedCidade) 
-      && (!this.dataInicial || corrida.data_largada >= this.dataInicial) 
-      && (!this.dataFinal || corrida.data_largada <= this.dataInicial)
+      (!this.selectedCidade || corrida.cidade === this.selectedCidade) 
+      && (!this.dataInicial || new Date(corrida.data_largada) >= this.dataInicial) 
+      && (!this.dataFinal || new Date(corrida.data_largada) <= this.dataFinal)
     );
   }
 
@@ -72,5 +72,11 @@ export class HomeComponent implements OnInit{
     this.dataInicial = new Date();
     this.dataFinal = new Date();
     this.corridasFiltered = this.corridas;
+  }
+
+  abrirDetalheCorrida(corrida: Corrida) {
+    const dialogRef = this.dialog.open(DetalheCorridaComponent, {
+       data: { corrida: corrida},
+     });
   }
 }

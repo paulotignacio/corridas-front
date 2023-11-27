@@ -28,12 +28,34 @@
             <button (click)="onLimpar()">Limpar</button>
         </div>
 
-        <ul id="dynamicList">
-            <li *ngFor="let corrida of corridasFiltered">
-                <!-- criar o template do item da lista -->
-                <p>{{corrida.nome}} - {{corrida.data_largada}}</p>
-            </li>
-        </ul>
+        <!-- <ul id="dynamicList"> -->
+            <!-- <li *ngFor="let corrida of corridasFiltered"> -->
+              <!-- Criar o template do item da lista -->
+              <!-- <div class="corrida-item"> -->
+                <!-- <div class="info-geral"> -->
+                  <!-- <p class="nome-destaque">{{corrida.nome.toUpperCase()}}</p> -->
+                  <!-- <p><strong>Percurso:</strong> {{corrida.percurso}}</p> -->
+                  <!-- <p><strong>Valor:</strong> R$ {{corrida.valor | number:'1.2-2'}}</p> -->
+                  <!-- <p><strong>Período de Inscrição:</strong> {{corrida.inicio_inscricao | date:'dd/MM/yyyy'}} a {{corrida.fim_inscricao | date:'dd/MM/yyyy'}}</p> -->
+                  <!-- <p><strong>Cidade:</strong> {{corrida.cidade}}</p> -->
+                  <!-- <p><strong>Site da Corrida:</strong> <a href="{{corrida.site}}" target="_blank">{{corrida.site}}</a></p> -->
+                <!-- </div> -->
+                <!-- <div class="data-largada"> -->
+                  <!-- <p class="data-label">Data de Largada</p> -->
+                  <!-- <p class="data-destaque">{{corrida.data_largada | date:'dd/MM/yyyy'}}</p> -->
+                  <!-- <p class="hora-destaque">{{corrida.hora_largada | date:'HH:mm'}}</p> -->
+                <!-- </div> -->
+              <!-- </div> -->
+            <!-- </li> -->
+          <!-- </ul> -->
+		<div>			
+			<mat-nav-list>
+				<mat-list-item *ngFor="let corrida of corridas">
+					<div mat-line>
+						{{ corrida.nome }}
+					</div>
+				</mat-list-item>
+			</mat-nav-list>
+		</div>			
     </div>
-
 </body>

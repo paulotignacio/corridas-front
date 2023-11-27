@@ -1,13 +1,31 @@
 <div>
-    <header>        
-        <button *ngIf="isLoggedIn && isAdministrador" routerLink="/corridas">Corridas</button>
-        <button *ngIf="isLoggedIn && isAdministrador" routerLink="/organizadores">Organizadores</button>
-        <button *ngIf="isLoggedIn && isAdministrador" routerLink="/administradores">Administradores</button>
-        <button *ngIf="isLoggedIn && isAdministrador" [routerLink]="['administrador-perfil', administradorId]" >Meu perfil</button>
+    <mat-toolbar>        
+        <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isAdministrador" routerLink="/corridas" mat-raised-button>Corridas</button>
+        </div>
         
-        <button *ngIf="isLoggedIn && isOrganizador" routerLink="/corridas">Minhas corridas</button>
-        <button *ngIf="isLoggedIn && isOrganizador" [routerLink]="['organizador-perfil', organizadorId]" >Meu perfil</button>
+        <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isAdministrador" routerLink="/organizadores" mat-raised-button>Organizadores</button>
+        </div>
         
-        <button *ngIf="isLoggedIn && isAtleta" routerLink="/atletas">Meu perfil</button>
-    </header>
+        <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isAdministrador" routerLink="/administradores" mat-raised-button>Administradores</button>
+        </div>
+        
+        <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isAdministrador" [routerLink]="['administrador-perfil', administradorId]" mat-raised-button>Meu perfil</button>
+        </div>
+        
+        <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isOrganizador" routerLink="/corridas" mat-raised-button>Minhas corridas</button>
+        </div>
+        
+        <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isOrganizador" [routerLink]="['organizador-perfil', organizadorId]" mat-raised-button>Meu perfil</button>
+        </div>
+        
+        <!-- <div class="button-row">
+            <button type="submit" *ngIf="isLoggedIn && isAtleta" routerLink="/atletas" mat-raised-button>Meu perfil</button>
+        </div> -->
+    </mat-toolbar>
 </div>

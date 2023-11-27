@@ -5,7 +5,7 @@ import { AdministradorService } from 'src/app/services/administrador.service';
 @Component({
   selector: 'app-login-administrador',
   templateUrl: './login-administrador.component.html',
-  styleUrls: ['./login-administrador.component.css']
+  styleUrls: ['./login-administrador.component.css'],
 })
 export class LoginAdministradorComponent implements OnInit{
   isLoggedIn: boolean = false;
@@ -24,8 +24,7 @@ export class LoginAdministradorComponent implements OnInit{
   login(): void{
     if (this.username && this.password) {
       this.administradorService.login(this.username, this.password).subscribe((response) =>{
-        if(response.length > 0)
-        {
+        if(response.length > 0) {
           localStorage.setItem('isLoggedIn', 'True');
           localStorage.setItem('userType', 'Administrador');
           localStorage.setItem('administradorId', response[0].id.toString())
@@ -33,8 +32,7 @@ export class LoginAdministradorComponent implements OnInit{
             window.location.reload();
           });
         }
-        else
-        {
+        else {
           alert('Usuário não encontrado');
         }
       });

@@ -1,17 +1,28 @@
-<h2>Adicionar Organizador</h2>
-<form (submit)="atualizarOrganizador()">
-  <div>    
-    <label>Nome</label>
-    <input [(ngModel)]="organizador.nome" name="nome" />
-  </div>
-  <div>
-    <label>Usuário</label>
-    <input [(ngModel)]="organizador.username" name="username" />
-  </div>
-  <div>
-    <label>Senha</label>
-    <input [(ngModel)]="organizador.password" type="Password" name="password" />
-  </div>
-  <button type="submit">Salvar</button>
-</form>
-<a routerLink="/organizadores/login">Já tem uma conta, faça login</a>
+<div>
+  <mat-card class="form-box">
+    <form (submit)="atualizarOrganizador()">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input [(ngModel)]="organizador.nome" name="nome" required matInput />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Usuário</mat-label>
+          <input [(ngModel)]="organizador.username" name="username" required matInput />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Senha</mat-label>
+          <input [(ngModel)]="organizador.password" type="password" name="password" required matInput />
+        </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button type="submit" mat-raised-button>Salvar</button>
+      </div>
+    </form>
+    <a class="register-login-link" routerLink="/organizadores/login">Já tem uma conta, faça login</a>
+  </mat-card>
+</div>

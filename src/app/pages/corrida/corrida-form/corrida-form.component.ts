@@ -18,9 +18,9 @@ export class CorridaFormComponent implements OnInit{
   corrida: Corrida = { 
     id: 0, 
     nome: '', 
-    inicio_inscricao: new Date(),
-    fim_inscricao: new Date(),
-    data_largada: new Date(),
+    inicio_inscricao: '',
+    fim_inscricao: '',
+    data_largada: '',
     hora_largada: '',
     percurso: '',
     valor: 0,
@@ -59,7 +59,7 @@ export class CorridaFormComponent implements OnInit{
 
   atualizarCorrida(): void {
     this.corrida.cidade = this.selectedCidade;
-    this.corrida.organizador =+ this.organizadorId;
+    this.corrida.organizador = +this.organizadorId;
     this.corridaService.atualizarCorrida(this.corrida).subscribe(() => {
       this.router.navigate(['/corridas']);
     });

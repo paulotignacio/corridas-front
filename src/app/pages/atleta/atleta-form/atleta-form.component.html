@@ -1,42 +1,62 @@
 <div>  
-  <h2>Adicionar Atleta</h2>
-  <form (submit)="atualizarAtleta()">
-    <div>
-      <label>Nome</label>
-      <input [(ngModel)]="atleta.nome" name="nome" />
-    </div>
-    <div>
-      <label>Data de Nascimento</label>
-      <input [(ngModel)]="atleta.data_nascimento" type="date" name="dataNascimento" />
-    </div>
-    <div>
-      <label>Gênero</label>
-      <select [(ngModel)]="selectedGenero" name="genero">
-        <option value="F">Feminino</option>
-        <option value="M">Masculino</option>
-      </select>
-    </div>
-    <div>
-      <label>Estado</label>
-      <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
-        <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
-      </select>
-    </div>
-    <div>
-      <label>Cidade</label>
-      <select [(ngModel)]="selectedCidade" name="cidade">
-        <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
-      </select>
-    </div>
-    <div>
-      <label>Usuário</label>
-      <input [(ngModel)]="atleta.username" name="username" />
-    </div>
-    <div>
-      <label>Senha</label>
-      <input [(ngModel)]="atleta.password" type="Password" name="password" />
-    </div>
-    <button type="submit">Salvar</button>
-  </form>
-  <a routerLink="/atletas/login">Já tem uma conta, faça login</a>
+  <mat-card class="form-box">    
+    <form (submit)="atualizarAtleta()">
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Nome</mat-label>
+          <input [(ngModel)]="atleta.nome" name="nome" required matInput>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Data de Nascimento</mat-label>
+          <input [(ngModel)]="atleta.data_nascimento" name="data_nascimento" matInput [matDatepicker]="picker" readonly >
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Gênero</mat-label>
+          <mat-select [(ngModel)]="selectedGenero" name="genero">
+            <mat-option value="F">Feminino</mat-option>
+            <mat-option value="M">Masculino</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Estado</mat-label>
+          <mat-select [(ngModel)]="selectedEstado" (selectionChange)="onEstadoChanged()" name="estado">
+            <mat-option *ngFor="let estado of estados" [value]="estado.id">{{estado.nome}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field>
+          <mat-label>Cidade</mat-label>
+          <mat-select [(ngModel)]="selectedCidade" name="cidade">
+            <mat-option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Usuário</mat-label>
+          <input [(ngModel)]="atleta.username" name="username" required matInput>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>Senha</mat-label>
+          <input [(ngModel)]="atleta.password" type="password"  name="password" required matInput>
+        </mat-form-field>
+      </div>
+      <div class="button-row">
+        <button type="submit" mat-raised-button>Salvar</button>
+      </div>
+    </form>
+    <a class="register-login-link" routerLink="/atletas/login">Já tem uma conta, faça login</a>
+  </mat-card>
 </div>

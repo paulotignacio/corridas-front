@@ -1,16 +1,12 @@
-header {
-    background-color: #333;
-    color: white;
-    padding: 1px;
-    text-align: left;
+.button-row button,
+.button-row a {
+  margin-right: 8px;
 }
 
-button {
-    padding: 10px;
-    margin: 5px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.login-box{
+    height: 100vh;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    margin-top: 10px;
 }

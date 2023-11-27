@@ -9,7 +9,7 @@ import { AtletaService } from 'src/app/services/atleta.service';
 })
 export class LoginAtletaComponent implements OnInit{
   isLoggedIn: boolean = false;
-  email: string = '';
+  username: string = '';
   password: string = '';
 
   constructor(
@@ -22,13 +22,20 @@ export class LoginAtletaComponent implements OnInit{
   }
 
   login(): void{
-    if (this.email && this.password) {
-      this.atletaService.login(this.email, this.password).subscribe((response) =>{
-        localStorage.setItem('isLoggedIn', 'True');
-        localStorage.setItem('userType', 'Atleta');
-        this.router.navigate(['']).then(() =>{
-          window.location.reload();
-        });
+    if (this.username && this.password) {
+      this.atletaService.login(this.username, this.password).subscribe((response) =>{
+        if(response.length > 0)
+        {
+          localStorage.setItem('isLoggedIn', 'True');
+          localStorage.setItem('userType', 'Atleta');
+          this.router.navigate(['']).then(() =>{
+            window.location.reload();
+          });
+        }
+        else
+        {
+          alert('Usuário não encontrado');
+        }
       });
     }
   }

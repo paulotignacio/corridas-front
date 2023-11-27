@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ConfirmacaoDialogComponent } from './pages/confirmacao-dialog/confirmacao-dialog.component';
-import { MatDialogModule } from '@angular/material/dialog';
 import { AdministradorListComponent } from './pages/administrador/administrador-list/administrador-list.component';
 import { AdministradorFormComponent } from './pages/administrador/administrador-form/administrador-form.component';
 import { AdministradorService } from './services/administrador.service';
@@ -37,6 +36,18 @@ import { LoginAdministradorComponent } from './pages/administrador/login-adminis
 import { OrganizadorPerfilComponent } from './pages/organizador/perfil/organizador-perfil.component';
 import { AdministradorPerfilComponent } from './pages/administrador/perfil/administrador-perfil.component';
 
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MAT_DATE_LOCALE, MatNativeDateModule } from '@angular/material/core';
+import { MatSelectModule } from '@angular/material/select';
+import { MatListModule } from '@angular/material/list';
+import { DetalheCorridaComponent } from './pages/detalhe-corrida/detalhe-corrida.component';
 
 @NgModule({
   declarations: [
@@ -63,6 +74,7 @@ import { AdministradorPerfilComponent } from './pages/administrador/perfil/admin
     LoginAdministradorComponent,
     OrganizadorPerfilComponent,
     AdministradorPerfilComponent,
+    DetalheCorridaComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,7 +82,17 @@ import { AdministradorPerfilComponent } from './pages/administrador/perfil/admin
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    MatDialogModule
+    MatDialogModule,
+    MatFormFieldModule, 
+    MatInputModule, 
+    MatIconModule,
+    MatButtonModule,
+    MatCardModule,
+    MatToolbarModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatSelectModule,
+    MatListModule,
   ],
   providers: [
     EstadoService,
@@ -80,7 +102,8 @@ import { AdministradorPerfilComponent } from './pages/administrador/perfil/admin
     AtletaService,
     ContatoOrganizadorService,
     ContatoAtletaService,
-    CorridaService
+    CorridaService,
+    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
   ],
   bootstrap: [AppComponent]
 })

@@ -25,12 +25,17 @@ export class LoginOrganizadorComponent implements OnInit{
   login(): void{
     if (this.username && this.password) {
       this.organizadorService.login(this.username, this.password).subscribe((response) =>{
-        localStorage.setItem('isLoggedIn', 'True');
-        localStorage.setItem('userType', 'Organizador');
-        localStorage.setItem('organizadorId', response[0].id.toString());
-        this.router.navigate(['']).then(() =>{
-          window.location.reload();
-        });
+        if(response.length > 0){
+          localStorage.setItem('isLoggedIn', 'True');
+          localStorage.setItem('userType', 'Organizador');
+          localStorage.setItem('organizadorId', response[0].id.toString());
+          this.router.navigate(['']).then(() =>{
+            window.location.reload();
+          });
+        }
+        else {
+          alert('Usuário não encontrado');
+        }
       });
     }
   }

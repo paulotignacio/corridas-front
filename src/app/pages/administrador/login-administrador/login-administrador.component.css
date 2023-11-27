@@ -1,0 +1,12 @@
+.button-row button,
+.button-row a {
+  margin-right: 8px;
+}
+
+.login-box{
+    height: 100vh;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    margin-top: 20px;
+}
