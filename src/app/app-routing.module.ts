@@ -35,7 +35,6 @@ const routes: Routes = [
   { path: 'administradores/novo', component: AdministradorFormComponent },
   { path: 'administradores/editar/:id', component: AdministradorFormComponent },
   { path: 'admin', component: LoginAdministradorComponent },
-  { path: '**', redirectTo: '' },//manter na última posição para checar as outras primeiro
 ];
 
 @NgModule({
