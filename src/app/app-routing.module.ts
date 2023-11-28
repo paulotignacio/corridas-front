@@ -29,12 +29,11 @@ const routes: Routes = [
   { path: 'atletas/novo', component: AtletaFormComponent },
   { path: 'atletas/editar/:id', component: AtletaFormComponent },
   { path: 'atletas/login', component: LoginAtletaComponent },
-  { path: 'administradores/novo', component: AdministradorFormComponent },
   { path: 'administradores', component: AdministradorListComponent },
-  { path: 'administradores-perfil/:id', component: AdministradorPerfilComponent },
+  { path: 'administradores/login', component: LoginAdministradorComponent },
   { path: 'administradores/novo', component: AdministradorFormComponent },
   { path: 'administradores/editar/:id', component: AdministradorFormComponent },
-  { path: 'administradores', component: LoginAdministradorComponent },
+  { path: 'administradores-perfil/:id', component: AdministradorPerfilComponent },
   { path: '**', redirectTo: '' },//manter na última posição para checar as outras primeiro
 ];
 
