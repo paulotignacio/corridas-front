@@ -1,7 +1,15 @@
-<form (submit)="atualizarOrganizador()">
-    <div>    
-        <label>Nome</label>
-        <input [(ngModel)]="organizador.nome" name="nome" />
-    </div>
-    <button type="submit">Salvar</button>
-</form>
+<div>    
+    <mat-card>
+        <div class="container">
+            <form (submit)="atualizarOrganizador()">
+                <div>    
+                    <mat-form-field appearance="fill">
+                        <mat-label>Nome</mat-label>
+                        <input [(ngModel)]="organizador.nome" name="nome" required matInput />
+                    </mat-form-field>
+                </div>
+                <button type="submit" mat-raised-button>Salvar</button>
+            </form>
+        </div>
+    </mat-card>
+</div>

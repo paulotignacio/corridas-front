@@ -33,6 +33,8 @@ const routes: Routes = [
   { path: 'admin/novo', component: AdministradorFormComponent },
   { path: 'administradores', component: AdministradorListComponent },
   { path: 'administrador-perfil/:id', component: AdministradorPerfilComponent },
+  { path: 'administradores/novo', component: AdministradorFormComponent },
+  { path: 'administradores/editar/:id', component: AdministradorFormComponent },
   { path: '**', redirectTo: '' },//manter na última posição para checar as outras primeiro
 ];
 

@@ -1,0 +1,25 @@
+.container {
+    max-width: 1000px;
+    margin:  auto;
+    padding: 10px;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(223, 220, 220, 0.1);
+}
+
+.nome-destaque {
+    font-weight: bold;
+    color: #007bff; /* cor azul como exemplo, ajuste conforme sua preferência */
+    font-size: 1.2em; /* ajuste o tamanho da fonte conforme necessário */
+}
+
+.lista-item {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+  
+.info-geral {
+    width: 80%;
+}

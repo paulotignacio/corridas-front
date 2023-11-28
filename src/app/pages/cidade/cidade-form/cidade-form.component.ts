@@ -44,7 +44,7 @@ export class CidadeFormComponent implements OnInit {
 
   carregarEstados(): void{
     this.estadoService.listarEstados().subscribe((estados) => {
-      this.estados = estados;
+      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
     });
 
   }

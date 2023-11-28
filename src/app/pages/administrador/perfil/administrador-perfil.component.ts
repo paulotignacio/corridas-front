@@ -27,7 +27,7 @@ export class AdministradorPerfilComponent implements OnInit {
     }  
   }
   
-  atualizarOrganizador(): void {
+  atualizarAdministrador(): void {
     this.administradorService.atualizarAdministrador(this.administrador).subscribe((organizador) => {
       this.administrador = organizador;
     });

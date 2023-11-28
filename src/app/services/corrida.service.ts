@@ -26,12 +26,12 @@ export class CorridaService {
   }
   
   atualizarCorrida(corrida: Corrida): Observable<Corrida> {
+    corrida.valor = +corrida.valor.toString().replace(',','.')
     if(corrida.id != 0)
       return this.http.put<Corrida>(this.baseUrl+"/"+corrida.id+"/", corrida)
     else
       return this.http.post<Corrida>(this.baseUrl+"/", corrida);
   }
-
 
   removerCorrida(id: number): Observable<void> {
     const url = `${this.baseUrl}/${id}`;

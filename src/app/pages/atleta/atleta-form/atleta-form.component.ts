@@ -64,13 +64,13 @@ export class AtletaFormComponent implements OnInit {
 
   carregarEstados(): void{
     this.estadoService.listarEstados().subscribe((estados) => {
-      this.estados = estados;
+      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
     });
   }
 
   onEstadoChanged(){
     this.cidadeService.listarCidadesDoEstado(this.selectedEstado).subscribe((cidades) =>{
-      this.cidades = cidades;
+      this.cidades = cidades.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
     });
   }
 

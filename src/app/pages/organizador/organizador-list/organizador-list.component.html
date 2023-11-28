@@ -1,9 +1,15 @@
-<h2>Organizadores</h2>
-<ul>
-  <li *ngFor="let organizador of organizadores">
-    {{ organizador.nome }} (ID: {{ organizador.id }})
-    <button (click)="editarOrganizador(organizador)">Editar</button>
-    <button (click)="confirmarExclusao(organizador)">Excluir</button>
-  </li>
-</ul>
-<button routerLink="/organizadores/novo">Adicionar Organizador</button>
+<div class="container">  
+  	<h2>Organizadores</h2>
+  	<div>
+    	<div *ngFor="let organizador of organizadores">
+      		<div class="lista-item">
+				<div class="info-geral">
+					<p class="nome-destaque">{{organizador.nome.toUpperCase()}}</p>
+				</div>
+				<button (click)="editarOrganizador(organizador)" mat-raised-button>Editar</button>
+				<button (click)="confirmarExclusao(organizador)" mat-raised-button>Excluir</button>
+			</div>
+		</div>
+	</div>
+  <button routerLink="/organizadores/novo" mat-raised-button>Adicionar Organizador</button>
+</div>

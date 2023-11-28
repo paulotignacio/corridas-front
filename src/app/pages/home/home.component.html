@@ -5,57 +5,58 @@
 </head>
 <body>
     <div class="container">
-        <div class="filters">
-            <label for="estado">Estado:</label>
-            <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
-                <option value="undefined" selected disabled>Selecione...</option>
-                <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
-            </select>
-
-            <label for="cidade">Cidade:</label>
-            <select [(ngModel)]="selectedCidade" name="cidade">
-                <option value="undefined" selected disabled>Selecione...</option>
-                <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
-            </select>
-
-            <label for="dataInicial">Data Inicial:</label>
-            <input type="date" [ngModel]="dataInicial | date:'yyyy-MM-dd'" name="dataInicial">
-
-            <label for="dataFinal">Data Final:</label>
-            <input type="date" [ngModel]="dataFinal | date:'yyyy-MM-dd'" name="dataFinal">
-
-            <button (click)="onPesquisar()">Pesquisar</button>
-            <button (click)="onLimpar()">Limpar</button>
-        </div>
-
-        <!-- <ul id="dynamicList"> -->
-            <!-- <li *ngFor="let corrida of corridasFiltered"> -->
-              <!-- Criar o template do item da lista -->
-              <!-- <div class="corrida-item"> -->
-                <!-- <div class="info-geral"> -->
-                  <!-- <p class="nome-destaque">{{corrida.nome.toUpperCase()}}</p> -->
-                  <!-- <p><strong>Percurso:</strong> {{corrida.percurso}}</p> -->
-                  <!-- <p><strong>Valor:</strong> R$ {{corrida.valor | number:'1.2-2'}}</p> -->
-                  <!-- <p><strong>Período de Inscrição:</strong> {{corrida.inicio_inscricao | date:'dd/MM/yyyy'}} a {{corrida.fim_inscricao | date:'dd/MM/yyyy'}}</p> -->
-                  <!-- <p><strong>Cidade:</strong> {{corrida.cidade}}</p> -->
-                  <!-- <p><strong>Site da Corrida:</strong> <a href="{{corrida.site}}" target="_blank">{{corrida.site}}</a></p> -->
-                <!-- </div> -->
-                <!-- <div class="data-largada"> -->
-                  <!-- <p class="data-label">Data de Largada</p> -->
-                  <!-- <p class="data-destaque">{{corrida.data_largada | date:'dd/MM/yyyy'}}</p> -->
-                  <!-- <p class="hora-destaque">{{corrida.hora_largada | date:'HH:mm'}}</p> -->
-                <!-- </div> -->
-              <!-- </div> -->
-            <!-- </li> -->
-          <!-- </ul> -->
-		<div>			
-			<mat-nav-list>
-				<mat-list-item *ngFor="let corrida of corridas">
-					<div mat-line>
-						{{ corrida.nome }}
-					</div>
-				</mat-list-item>
-			</mat-nav-list>
-		</div>			
-    </div>
+        <form>
+			<mat-form-field>
+				<mat-label>Estado</mat-label>
+				<mat-select [(ngModel)]="selectedEstado" (selectionChange)="onEstadoChanged()" name="estado">
+					<mat-option *ngFor="let estado of estados" [value]="estado.id">{{estado.nome}}</mat-option>
+				</mat-select>
+			</mat-form-field>	
+		
+			<mat-form-field>
+				<mat-label>Cidade</mat-label>
+				<mat-select [(ngModel)]="selectedCidade" name="cidade">
+					<mat-option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		
+			<mat-form-field>
+				<mat-label>Data Inicial</mat-label>
+				<input [(ngModel)]="dataInicial" name="dataInicial" matInput [matDatepicker]="pickerInicial" readonly >
+				<mat-datepicker-toggle matIconSuffix [for]="pickerInicial"></mat-datepicker-toggle>
+				<mat-datepicker #pickerInicial></mat-datepicker>
+			</mat-form-field>
+		
+			<mat-form-field>
+				<mat-label>Data Final</mat-label>
+				<input [(ngModel)]="dataFinal" name="dataFinal" matInput [matDatepicker]="pickerFinal" readonly >
+				<mat-datepicker-toggle matIconSuffix [for]="pickerFinal"></mat-datepicker-toggle>
+				<mat-datepicker #pickerFinal></mat-datepicker>
+			</mat-form-field>
+		
+		
+			<button type="submit" (click)="onPesquisar()" mat-raised-button>Pesquisar</button>
+		
+		
+			<button type="submit" (click)="onLimpar()" mat-raised-button>Limpar</button>
+			
+        </form>
+		<div *ngFor="let corrida of corridasFiltered">
+			<div class="corrida-item">
+                <div class="info-geral">
+                  <p class="nome-destaque">{{corrida.nome.toUpperCase()}}</p>
+                  <p><strong>Percurso:</strong> {{corrida.percurso}}</p>
+                  <p><strong>Valor:</strong> R$ {{corrida.valor | number:'1.2-2'}}</p>
+                  <p><strong>Período de Inscrição:</strong> {{corrida.inicio_inscricao | date:'dd/MM/yyyy'}} a {{corrida.fim_inscricao | date:'dd/MM/yyyy'}}</p>
+                  <p><strong>Cidade:</strong> {{corrida.cidade}}</p>
+                  <p><strong>Site da Corrida: </strong> <a href="{{corrida.site}}" target="_blank">{{corrida.site}}</a></p>
+                </div>
+                <div class="data-largada">
+                  <p class="data-label">Data de Largada</p>
+                  <p class="data-destaque">{{corrida.data_largada | date:'dd/MM/yyyy'}}</p>
+                  <p class="hora-destaque">{{corrida.data_hora_largada | date:'HH:mm'}}</p>
+                </div>
+			</div>
+		</div>
+	</div>
 </body>

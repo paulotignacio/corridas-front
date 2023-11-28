@@ -1,51 +1,72 @@
-<div class="form-box">
-  <form (submit)="atualizarCorrida()">
-    <h2>Adicionar Corrida</h2>
-    <div>
-      <label>Nome</label>
-      <input [(ngModel)]="corrida.nome" name="nome" />
-    </div>
-    <div>
-      <label>Início inscrição</label>
-      <input type="date" [(ngModel)]="corrida.inicio_inscricao" name="inicio_inscricao" />
-    </div>
-    <div>
-      <label>Fim inscrição</label>
-      <input type="date" [(ngModel)]="corrida.fim_inscricao" name="fim_inscricao" />
-    </div>
-    <div>
-      <label>Data de largada</label>
-      <input type="date" [(ngModel)]="corrida.data_largada" name="data_largada" />
-    </div>
-    <div>
-      <label>Hora de largada</label>
-      <input type="time" [(ngModel)]="corrida.hora_largada" name="hora_largada" />
-    </div>
-    <div>
-      <label>Percurso</label>
-      <input [(ngModel)]="corrida.percurso" name="percurso" />
-    </div>
-    <div>
-      <label>Valor</label>
-      <input [(ngModel)]="corrida.valor" placeholder="Valor" name="valor" />
-    </div>
-    <div>
-      <label>Site</label>
-      <input [(ngModel)]="corrida.site" name="site" />
-    </div>
-    <div>
-      <label>Estado</label>
-      <select [(ngModel)]="selectedEstado" (change)="onEstadoChanged()" name="estado">
-        <option *ngFor="let estado of estados" [value]="estado.id">{{ estado.nome }}</option>
-      </select>
-    </div>
-    <div>
-      <label>Cidade</label>
-      <select [(ngModel)]="selectedCidade" name="cidade">
-        <option *ngFor="let cidade of cidades" [value]="cidade.id">{{ cidade.nome }}</option>
-      </select>
-    </div>
-    <button type="submit">Salvar</button>
-  </form>
-  <a class="backto-list" routerLink="/corridas">Voltar para lista</a>
+<div class="container">  
+	<form (submit)="atualizarCorrida()">
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Nome</mat-label>
+				<input [(ngModel)]="corrida.nome" name="nome" required matInput />
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<mat-label>Início inscrição</mat-label>
+				<input [(ngModel)]="corrida.inicio_inscricao" name="inicio_inscricao" matInput [matDatepicker]="pickerInicioInscricao" readonly >
+				<mat-datepicker-toggle matIconSuffix [for]="pickerInicioInscricao"></mat-datepicker-toggle>
+				<mat-datepicker #pickerInicioInscricao></mat-datepicker>
+			</mat-form-field>
+		
+			<mat-form-field>
+				<mat-label>Fim inscrição</mat-label>
+				<input [(ngModel)]="corrida.fim_inscricao" name="fim_inscricao" matInput [matDatepicker]="pickerFimInscricao" readonly >
+				<mat-datepicker-toggle matIconSuffix [for]="pickerFimInscricao"></mat-datepicker-toggle>
+				<mat-datepicker #pickerFimInscricao></mat-datepicker>
+			</mat-form-field>			
+		</div>
+		<div>
+			<mat-form-field>
+				<mat-label>Data de largada</mat-label>
+				<input [(ngModel)]="corrida.data_largada" name="data_largada" matInput [matDatepicker]="pickerDataLargada" readonly >
+				<mat-datepicker-toggle matIconSuffix [for]="pickerDataLargada"></mat-datepicker-toggle>
+				<mat-datepicker #pickerDataLargada></mat-datepicker>
+			</mat-form-field>	
+		
+			<mat-form-field appearance="fill">
+				<mat-label>Hora de largada</mat-label>
+				<input type="time" [(ngModel)]="corrida.hora_largada" name="hora_largada" required matInput />
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Percurso</mat-label>
+				<input type="text" [(ngModel)]="corrida.percurso" name="percurso" required matInput />
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Valor</mat-label>
+				<input type="text" [(ngModel)]="corrida.valor" name="valor" required matInput />
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field appearance="fill">
+				<mat-label>Site</mat-label>
+				<input type="text" [(ngModel)]="corrida.site" name="site" required matInput />
+			</mat-form-field>
+		</div>
+		<div>
+			<mat-form-field>
+				<mat-label>Estado</mat-label>
+				<mat-select [(ngModel)]="selectedEstado" (selectionChange)="onEstadoChanged()" name="estado">
+					<mat-option *ngFor="let estado of estados" [value]="estado.id">{{estado.nome}}</mat-option>
+				</mat-select>
+			</mat-form-field>			
+		
+			<mat-form-field>
+				<mat-label>Cidade</mat-label>
+				<mat-select [(ngModel)]="selectedCidade" name="cidade">
+					<mat-option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</mat-option>
+				</mat-select>
+			</mat-form-field>
+		</div>
+		<button type="submit" mat-raised-button >Salvar</button>
+	</form>
 </div>

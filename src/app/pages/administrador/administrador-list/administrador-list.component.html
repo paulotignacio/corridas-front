@@ -1,9 +1,15 @@
-<h2>Administradores</h2>
-<ul>
-  <li *ngFor="let administrador of administradores">
-    {{ administrador.nome }} (ID: {{ administrador.id }})
-    <button (click)="editarAdministrador(administrador)">Editar</button>
-    <button (click)="confirmarExclusao(administrador)">Excluir</button>
-  </li>
-</ul>
-<button routerLink="/administradores/novo">Adicionar Administrador</button>
+<div class="container">  
+	<h2>Administradores</h2>
+	<div>
+		<div *ngFor="let administrador of administradores">
+			<div class="lista-item">
+				<div class="info-geral">
+					<p class="nome-destaque">{{administrador.nome.toUpperCase()}}</p>
+				</div>
+				<button (click)="editarAdministrador(administrador)" mat-raised-button>Editar</button>
+				<button (click)="confirmarExclusao(administrador)" mat-raised-button>Excluir</button>
+			</div>
+		</div>
+	</div>
+	<button routerLink="/administradores/novo" mat-raised-button>Adicionar Administrador</button>
+</div>

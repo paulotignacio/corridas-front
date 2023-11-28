@@ -11,7 +11,7 @@ import { DetalheCorridaComponent } from '../detalhe-corrida/detalhe-corrida.comp
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit{
   corridas: Corrida[] = [];
@@ -20,8 +20,8 @@ export class HomeComponent implements OnInit{
   selectedEstado: any;
   cidades: Cidade[] = [];
   selectedCidade: any;
-  dataInicial = new Date();
-  dataFinal = new Date();
+  dataInicial = '';
+  dataFinal = '';
   
   constructor(
     private corridaService: CorridaService,
@@ -37,6 +37,8 @@ export class HomeComponent implements OnInit{
  
   carregarCorridas(): void{
     this.corridaService.listarCorridas().subscribe((corridas) => {
+      // corridas.map(x => x.data_hora_largada = new Date(x.data_largada.getFullYear(), x.data_largada.getMonth(), x.data_largada.getDate(),  + x.hora_largada.ho))
+      corridas.map(x => x.data_hora_largada = new Date(x.data_largada + "T" + x.hora_largada))
       this.corridas = corridas;
       this.corridasFiltered = this.corridas;
     });
@@ -44,33 +46,35 @@ export class HomeComponent implements OnInit{
   
   carregarEstados(): void{
     this.estadoService.listarEstados().subscribe((estados) => {
-      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
+      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1:-1);
     });
   }
 
   onEstadoChanged(){
     this.cidadeService.listarCidadesDoEstado(this.selectedEstado).subscribe((cidades) =>{
-      this.cidades = cidades.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
+      this.cidades = cidades.sort((a, b) => (a.nome > b.nome) ? 1:-1);
     });
   }
 
   onPesquisar(){
     console.log(this.selectedCidade);
-    console.log(this.dataInicial);
-    console.log(this.dataFinal);
+    console.log(new Date(this.dataInicial));
+    console.log(new Date(this.dataFinal));
     this.corridasFiltered = this.corridas.filter(corrida =>
-      (!this.selectedCidade || corrida.cidade === this.selectedCidade) 
-      && (!this.dataInicial || new Date(corrida.data_largada) >= this.dataInicial) 
-      && (!this.dataFinal || new Date(corrida.data_largada) <= this.dataFinal)
+    (!this.selectedCidade || corrida.cidade == this.selectedCidade) 
+    && (!this.dataInicial || new Date(this.dataInicial) <= new Date(corrida.data_largada))
+    && (!this.dataFinal || new Date(this.dataFinal) >= new Date(corrida.data_largada))
     );
+    
+    console.log(this.corridasFiltered);
   }
 
   onLimpar():void{
     this.selectedCidade = null;
     this.cidades = [];
     this.selectedEstado = null;
-    this.dataInicial = new Date();
-    this.dataFinal = new Date();
+    this.dataInicial = '';
+    this.dataFinal = '';
     this.corridasFiltered = this.corridas;
   }
 

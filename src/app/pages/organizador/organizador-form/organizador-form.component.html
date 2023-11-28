@@ -1,28 +1,28 @@
 <div>
-  <mat-card class="form-box">
-    <form (submit)="atualizarOrganizador()">
-      <div>
-        <mat-form-field appearance="fill">
-          <mat-label>Nome</mat-label>
-          <input [(ngModel)]="organizador.nome" name="nome" required matInput />
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <mat-label>Usuário</mat-label>
-          <input [(ngModel)]="organizador.username" name="username" required matInput />
-        </mat-form-field>
-      </div>
-      <div>
-        <mat-form-field>
-          <mat-label>Senha</mat-label>
-          <input [(ngModel)]="organizador.password" type="password" name="password" required matInput />
-        </mat-form-field>
-      </div>
-      <div class="button-row">
-        <button type="submit" mat-raised-button>Salvar</button>
-      </div>
-    </form>
-    <a class="register-login-link" routerLink="/organizadores/login">Já tem uma conta, faça login</a>
-  </mat-card>
+	<mat-card class="form-box">
+		<form (submit)="atualizarOrganizador()">
+			<div>
+				<mat-form-field appearance="fill">
+				<mat-label>Nome</mat-label>
+				<input [(ngModel)]="organizador.nome" name="nome" required matInput />
+				</mat-form-field>
+			</div>
+			<div>
+				<mat-form-field>
+				<mat-label>Usuário</mat-label>
+				<input [(ngModel)]="organizador.username" name="username" required matInput />
+				</mat-form-field>
+			</div>
+			<div>
+				<mat-form-field>
+				<mat-label>Senha</mat-label>
+				<input [(ngModel)]="organizador.password" type="password" name="password" required matInput />
+				</mat-form-field>
+			</div>
+			<div class="button-row">
+				<button type="submit" mat-raised-button>Salvar</button>
+			</div>
+		</form>
+		<a class="register-login-link" routerLink="/organizadores/login">Já tem uma conta, faça login</a>
+	</mat-card>
 </div>

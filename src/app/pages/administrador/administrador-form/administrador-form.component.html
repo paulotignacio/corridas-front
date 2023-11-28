@@ -1,17 +1,27 @@
-<h2>Adicionar Administrador</h2>
-<form (submit)="atualizarAdministrador()">
-  <div>
-    <label>Nome</label>
-    <input [(ngModel)]="administrador.nome" name="nome" />
-  </div>
-  <div>
-    <label>Usuário</label>
-    <input [(ngModel)]="administrador.username" name="username" />
-  </div>
-  <div>
-    <label>Senha</label>
-    <input [(ngModel)]="administrador.password" type="Password" name="password" />
-  </div>
-  <button type="submit">Salvar</button>
-</form>
-<button routerLink="/administradores">Voltar para lista</button>
+<div>
+	<mat-card class="form-box">
+		<form (submit)="atualizarAdministrador()">
+			<div>
+				<mat-form-field appearance="fill">
+				<mat-label>Nome</mat-label>
+				<input [(ngModel)]="administrador.nome" name="nome" required matInput />
+				</mat-form-field>
+			</div>
+			<div>
+				<mat-form-field>
+				<mat-label>Usuário</mat-label>
+				<input [(ngModel)]="administrador.username" name="username" required matInput />
+				</mat-form-field>
+			</div>
+			<div>
+				<mat-form-field>
+				<mat-label>Senha</mat-label>
+				<input [(ngModel)]="administrador.password" type="password" name="password" required matInput />
+				</mat-form-field>
+			</div>
+			<div class="button-row">
+				<button type="submit" mat-raised-button>Salvar</button>
+			</div>
+		</form>
+	</mat-card>
+</div>
