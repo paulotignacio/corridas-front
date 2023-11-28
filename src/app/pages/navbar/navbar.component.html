@@ -9,9 +9,9 @@
                 <button type="submit" *ngIf="!isLoggedIn" routerLink="/organizadores/login" mat-button>Cadastre sua corrida</button>
             </div>
 
-            <!-- <div class="button-row button-login-logout">
-                <button type="submit" *ngIf="!isLoggedIn" routerLink="/atletas/login" mat-button>Área dos atletas</button>
-            </div> -->
+            <div class="button-row button-login-logout">
+                <button type="submit" *ngIf="!isLoggedIn" routerLink="/administradores/login" mat-button>Admin</button>
+            </div>
 
             <div class="button-row button-login-logout">
                 <button type="submit" *ngIf="isLoggedIn" (click)="logout()" mat-button>Logout</button>
