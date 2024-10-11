@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class AtletaService {
-  private baseUrl = 'https://corridasapi1-0qtf945p.b4a.run/atletas'; // Sua URL da API
+  private baseUrl = 'http://localhost:8000/atletas'; // Sua URL da API
 
   constructor(private http: HttpClient) {}
 

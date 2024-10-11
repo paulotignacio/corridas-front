@@ -12,11 +12,9 @@ import { DatePipe } from '@angular/common';
   selector: 'app-corrida-form',
   templateUrl: './corrida-form.component.html',
   styleUrls: ['./corrida-form.component.css'],
-  providers: [
-    DatePipe
-  ]
+  providers: [DatePipe]
 })
-export class CorridaFormComponent implements OnInit{
+export class CorridaFormComponent implements OnInit {
   corrida: Corrida = { 
     id: 0, 
     nome: '', 
@@ -28,15 +26,23 @@ export class CorridaFormComponent implements OnInit{
     percurso: '',
     valor: 0,
     site: '',
-    cidade: 0,
+    cidade: { 
+      id: 0, 
+      nome: '', 
+      estado: { 
+        id: 0, 
+        nome: '',  // Incluindo também o 'nome' do estado como esperado pela interface Estado
+        uf: '' 
+      } 
+    },
     organizador: 0
   };
+  
   estados: Estado[] = [];
   cidades: Cidade[] = [];
-  corridas: Corrida[] = [];
-  selectedEstado: any;
-  selectedCidade: any;
   organizadorId = '';
+  selectedEstado: Estado | null = null;  // Correto
+  selectedCidade: Cidade | null = null;  // Correto
 
   constructor(
     private corridaService: CorridaService,
@@ -49,53 +55,57 @@ export class CorridaFormComponent implements OnInit{
 
   ngOnInit(): void {
     this.carregarEstados();
-
     this.carregarStorage();
 
     const corridaId = this.route.snapshot.paramMap.get('id');
-    if(corridaId){
+    if (corridaId) {
       const numberId = +corridaId;
       this.corridaService.listarCorrida(numberId).subscribe((corrida) => {
         this.corrida = corrida;
+        this.selectedCidade = corrida.cidade; // Carrega a cidade da corrida
+        this.selectedEstado = corrida.cidade.estado; // Carrega o estado da corrida
       });
     }
   }
 
   atualizarCorrida(): void {
-    this.corrida.cidade = this.selectedCidade;
+    if (this.selectedCidade) {
+      this.corrida.cidade = this.selectedCidade; // Define a cidade selecionada
+    }
     this.corrida.organizador = +this.organizadorId;
-    var formattedDate = this.datePipe.transform(this.corrida.inicio_inscricao, "yyyy-MM-dd");
-    if(formattedDate)
-      this.corrida.inicio_inscricao = formattedDate;
 
-    formattedDate = this.datePipe.transform(this.corrida.fim_inscricao, "yyyy-MM-dd");
-    if(formattedDate)
-      this.corrida.fim_inscricao = formattedDate;
-    
-    formattedDate = this.datePipe.transform(this.corrida.data_largada, "yyyy-MM-dd");
-    if(formattedDate)
-      this.corrida.data_largada = formattedDate;
+    this.corrida.inicio_inscricao = this.formatarData(this.corrida.inicio_inscricao);
+    this.corrida.fim_inscricao = this.formatarData(this.corrida.fim_inscricao);
+    this.corrida.data_largada = this.formatarData(this.corrida.data_largada);
 
     this.corridaService.atualizarCorrida(this.corrida).subscribe(() => {
       this.router.navigate(['/corridas']);
     });
   }
 
-  carregarEstados(): void{
+  formatarData(data: string): string {
+    const formattedDate = this.datePipe.transform(data, "yyyy-MM-dd");
+    return formattedDate ? formattedDate : data; // Retorna a data formatada ou a original
+  }
+
+  carregarEstados(): void {
     this.estadoService.listarEstados().subscribe((estados) => {
-      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
+      this.estados = estados.sort((a, b) => (a.nome > b.nome) ? 1 : -1);
     });
   }
 
-  onEstadoChanged(){
-    this.cidadeService.listarCidadesDoEstado(this.selectedEstado).subscribe((cidades) =>{
-      this.cidades = cidades.sort((a, b) => (a.nome > b.nome) ? 1:-1);;
-    });
+  onEstadoChanged(): void {
+    if (this.selectedEstado) {
+      this.cidadeService.listarCidadesDoEstado(this.selectedEstado.id).subscribe((cidades) => {
+        this.cidades = cidades.sort((a, b) => (a.nome > b.nome) ? 1 : -1);
+      });
+    }
   }
 
-  carregarStorage(): void{
+  carregarStorage(): void {
     const organizadorId = localStorage.getItem('organizadorId');
-    if(organizadorId)
+    if (organizadorId) {
       this.organizadorId = organizadorId;
+    }
   }
 }

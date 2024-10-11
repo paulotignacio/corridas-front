@@ -12,7 +12,7 @@ import { EstadoService } from 'src/app/services/estado.service';
   styleUrls: ['./cidade-form.component.css']
 })
 export class CidadeFormComponent implements OnInit {
-  cidade: Cidade = { id: 0, nome: '', estado: 0};
+  cidade: Cidade = { id: 0, nome: '', estado: {id: 0, nome: '', uf: ''}};
   estados: Estado[] = [];
   selectedEstado: any;
 

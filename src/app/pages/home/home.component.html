@@ -48,7 +48,7 @@
                   <p><strong>Percurso:</strong> {{corrida.percurso}}</p>
                   <p><strong>Valor:</strong> R$ {{corrida.valor | number:'1.2-2'}}</p>
                   <p><strong>Período de Inscrição:</strong> {{corrida.inicio_inscricao | date:'dd/MM/yyyy'}} a {{corrida.fim_inscricao | date:'dd/MM/yyyy'}}</p>
-                  <p><strong>Cidade:</strong> {{corrida.cidade}}</p>
+                  <p><strong>Cidade:</strong> {{corrida.cidade.nome}}</p>
                   <p><strong>Site da Corrida: </strong> <a href="{{corrida.site}}" target="_blank">{{corrida.site}}</a></p>
                 </div>
                 <div class="data-largada">

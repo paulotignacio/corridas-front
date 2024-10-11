@@ -61,7 +61,7 @@ export class HomeComponent implements OnInit{
     console.log(new Date(this.dataInicial));
     console.log(new Date(this.dataFinal));
     this.corridasFiltered = this.corridas.filter(corrida =>
-    (!this.selectedCidade || corrida.cidade == this.selectedCidade) 
+    (!this.selectedCidade || corrida.cidade.id == this.selectedCidade) 
     && (!this.dataInicial || new Date(this.dataInicial) <= new Date(corrida.data_largada))
     && (!this.dataFinal || new Date(this.dataFinal) >= new Date(corrida.data_largada))
     );

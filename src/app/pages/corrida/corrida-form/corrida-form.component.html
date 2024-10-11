@@ -56,14 +56,14 @@
 			<mat-form-field>
 				<mat-label>Estado</mat-label>
 				<mat-select [(ngModel)]="selectedEstado" (selectionChange)="onEstadoChanged()" name="estado">
-					<mat-option *ngFor="let estado of estados" [value]="estado.id">{{estado.nome}}</mat-option>
+					<mat-option *ngFor="let estado of estados" [value]="estado">{{estado.nome}}</mat-option>
 				</mat-select>
 			</mat-form-field>			
 		
 			<mat-form-field>
 				<mat-label>Cidade</mat-label>
 				<mat-select [(ngModel)]="selectedCidade" name="cidade">
-					<mat-option *ngFor="let cidade of cidades" [value]="cidade.id">{{cidade.nome}}</mat-option>
+					<mat-option *ngFor="let cidade of cidades" [value]="cidade">{{cidade.nome}}</mat-option>
 				</mat-select>
 			</mat-form-field>
 		</div>

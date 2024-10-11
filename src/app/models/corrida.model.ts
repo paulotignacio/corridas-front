@@ -11,6 +11,6 @@ export interface Corrida {
     percurso: string;
     valor: number;
     site: string;
-    cidade: number;
+    cidade: Cidade;
     organizador: number;
 }
