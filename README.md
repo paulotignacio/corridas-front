@@ -1,27 +1,51 @@
-# CorridasApp
+# 🏃 CorridasApp – Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
+Este é o frontend do **Projeto Corridas**, uma plataforma que conecta organizadores e corredores por meio de um sistema de busca e notificação de corridas.
 
-## Development server
+---
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🔗 Repositório da API (Back-end)
 
-## Code scaffolding
+- [https://github.com/paulotignacio/corridas-api](https://github.com/paulotignacio/corridas-api)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+---
 
-## Build
+## 🚀 Como rodar localmente
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install
+ng serve
+```
+Acesse: http://localhost:4200
+```
+Estrutura de Diretórios
+src/
+├── app/               # Componentes Angular
+├── assets/            # Imagens, ícones, etc
+├── environments/      # Configurações de ambiente
+└── index.html         # Entrada principal
+```
+⚙️ Comandos Úteis
+Tarefa	Comando
+Rodar dev server	ng serve
+Criar componente	ng generate component nome-do-componente
+Build produção	ng build
+Rodar testes unitários	ng test
+Rodar testes E2E	ng e2e
 
-## Running unit tests
+📄 Sobre o Projeto Corridas
+A proposta é funcionar como uma espécie de “classificados de corridas” com foco geográfico. Os usuários poderão:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Ver corridas por região
 
-## Running end-to-end tests
+Ser notificados de novos eventos
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Organizar provas e cadastrar seus eventos
 
-## Further help
+Usar o app para descobrir e acompanhar competições
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+👥 Contribuidores
+Paulo Ignacio – Coordenação / Produto
+Pedro Ignacio – Front-end
+Luis Ignacio – Back-end
+Tuany – Infraestrutura / Redes
