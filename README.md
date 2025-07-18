@@ -26,13 +26,14 @@ src/
 └── index.html         # Entrada principal
 ```
 ⚙️ Comandos Úteis
+```
 Tarefa	Comando
 Rodar dev server	ng serve
 Criar componente	ng generate component nome-do-componente
 Build produção	ng build
 Rodar testes unitários	ng test
 Rodar testes E2E	ng e2e
-
+```
 📄 Sobre o Projeto Corridas
 A proposta é funcionar como uma espécie de “classificados de corridas” com foco geográfico. Os usuários poderão:
 
