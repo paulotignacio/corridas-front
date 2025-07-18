@@ -30,7 +30,7 @@ src/
 Tarefa	Comando
 Rodar dev server	ng serve
 Criar componente	ng generate component nome-do-componente
-Build produção	ng build
+Build produção	  ng build
 Rodar testes unitários	ng test
 Rodar testes E2E	ng e2e
 ```
